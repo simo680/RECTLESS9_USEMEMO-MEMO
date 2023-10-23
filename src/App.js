@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Counter from "./components/Counter";
+import Burden from "./components/Burden";
 
 function App() {
+  
+  const [count1, setCount1] = useState(0)
+  const [count2, setCount2] = useState(0)
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     <div>
+      <h2>Counter 1</h2>
+      <Counter value={count1} elem={'count1'}/>
+      <button onClick={() => setCount1(count1 + 1)}>Increment!</button>
+      </div>
+      <div>
+        <h2>Counter 2</h2>
+        <Counter value={count2} elem={'count2'}/>
+        <button onClick={() => setCount2(count2 + 1)}>Increment!</button>
+        <Burden value={count2}/>
+      </div>
     </div>
+    
   );
 }
 
