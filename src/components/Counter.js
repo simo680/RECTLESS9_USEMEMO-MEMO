@@ -1,9 +1,9 @@
+import { memo } from "react";
 
 let render = {
     count1: 0,
     count2: 0,
 }
-
 
 function Counter({value, elem}) {
     
@@ -16,4 +16,6 @@ function Counter({value, elem}) {
     )
 }
 
-export default Counter
+export default memo(Counter, (previousProps, nextProp) => {
+   return previousProps.value > 5
+})

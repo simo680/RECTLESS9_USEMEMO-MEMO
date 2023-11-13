@@ -1,4 +1,4 @@
-import { useMemo } from "react"
+import { memo, useMemo } from "react"
 
 let render = 0
 
@@ -20,7 +20,7 @@ function Burden ({value}) {
         while(i < 1_000_000_000) {
             i++
         }
-        return (value % 2 === 0) ? 'Значение четное' : 'Значение не четное'
+        return (value > 5 ) ? 'Значение больше 5' : 'Значение не четное'
     }, [value])
     
     return (
@@ -29,5 +29,8 @@ function Burden ({value}) {
         </div>
     )
 }
-
-export default Burden
+// Если коллбек вернет false - компонент обновится
+// Если вернет true - компонент обновляться не будет
+export default memo(Burden, (previousProp, nextProp) => {
+    return nextProp.value !== 6
+})
